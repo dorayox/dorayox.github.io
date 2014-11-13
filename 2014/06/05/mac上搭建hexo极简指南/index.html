@@ -1,4 +1,5 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="description" content="iOS programming sports lifelong learner"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="alternative" href="/atom.xml" title="Dorayox's Blog" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>Mac上搭建hexo极简指南 - Dorayox's Blog</title><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro"><link rel="stylesheet" href="/css/main.css" type="text/css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--></head><body><header class="head"><h1 class="head-title u-fl"><a href="/">Dorayox's Blog</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a href="/" class="head-nav__link">Home</a></li><li class="head-nav__item"><a href="/archives" class="head-nav__link">Archives</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"><time datetime="2014-06-05T12:22:31.000Z" class="post__time">六月 5, 2014</time><h1 class="post__title"><a href="/2014/06/05/mac上搭建hexo极简指南/">Mac上搭建hexo极简指南</a></h1></header><div class="post__main echo"><ol>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="description" content="iOS programming sports lifelong learner"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="alternative" href="/atom.xml" title="Dorayox's Blog" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>Mac上搭建hexo极简指南 - Dorayox's Blog</title><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro"><link rel="stylesheet" href="/css/main.css" type="text/css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--></head><body><header class="head"><h1 class="head-title u-fl"><a href="/">Dorayox's Blog</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a href="/" class="head-nav__link">Home</a></li><li class="head-nav__item"><a href="/archives" class="head-nav__link">Archives</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"><time datetime="2014-06-05T12:22:31.000Z" class="post__time">六月 5, 2014</time><h1 class="post__title"><a href="/2014/06/05/mac上搭建hexo极简指南/">Mac上搭建hexo极简指南</a></h1></header><div class="post__main echo"><h1>本地搭建环境</h1>
+<ol>
 <li><p>安装nvm(node.js的版本管理工具）</p>
  <figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre><span class="variable">$ </span>wget -qO- <span class="symbol">https:</span>/<span class="regexp">/raw.github.com/creationix</span><span class="regexp">/nvm/master</span><span class="regexp">/install.sh | sh
@@ -19,44 +20,72 @@
 </pre></td><td class="code"><pre><span class="comment">$</span> <span class="comment">npm</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">g</span> <span class="comment">hexo
 </pre></td></tr></table></figure>
 </li>
-<li><p>创建hexo文件夹，并安装hexo相关组件</p>
- <figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre><span class="variable">$ </span>hexo init hexo
-<span class="variable">$ </span>cd hexo
-<span class="variable">$ </span>npm install
-</pre></td></tr></table></figure>
-</li>
-<li><p>本地查看</p>
-<p> 输入如下命令后，打开浏览器，并输入<code>localhost:4000</code>来查看</p>
- <figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre><span class="variable">$ </span>hexo g
-<span class="variable">$ </span>hexo s
-</pre></td></tr></table></figure>
-</li>
-<li><p>注册github账号</p>
-</li>
-<li><p>创建github账号同名repository</p>
-<p> eg:github账号名位dorayox，则创建<code>dorayox.github.io</code></p>
-</li>
-<li><p>部署到github上</p>
-<p> 如下所示编辑_config.yml</p>
+<li><p>将nvm的bin目录添加到环境变量中</p>
  <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
-</pre></td><td class="code"><pre><span class="method">deploy:</span>
-  <span class="method">type:</span> github
-  <span class="method">repository:</span> git@github.<span class="method">com:</span>dorayox/dorayox.github.io.git
-  <span class="method">branch:</span> master
-</pre></td></tr></table></figure><br> 输入如下命令，完成到github得部署，之后打开浏览器并输入<code>dorayox.github.io</code>来查看<br> <figure class="highlight"><table><tr><td class="gutter"><pre>1
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="code"><pre>以zsh举例：
+<span class="bullet">1. </span>用vi打开zsh的配置文件
+	vi ~/.zshrc
+<span class="bullet">2. </span>在.zshrc文件中添加下列内容
+	export PATH=$PATH:/Users/<span class="code">`users`</span>/.nvm/v0.10.28/bin
+(说明：1. v0.10.28为nvm的版本号，依使用版本而定
+	  2. <span class="code">`users`</span>会展开成具体的用户名)		
+
+<span class="code">```</span>	
+
+<span class="bullet">6. </span>创建hexo文件夹，并安装hexo相关组件
+</pre></td></tr></table></figure><br> $ hexo init hexo<br> $ cd hexo<br> $ npm install<br> <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre><span class="variable">$ </span>hexo g
-<span class="variable">$ </span>hexo d
+3
+4
+</pre></td><td class="code"><pre>
+<span class="bullet">7. </span>本地查看
+
+输入如下命令后，打开浏览器，并输入<span class="code">`localhost:4000`</span>来查看
+</pre></td></tr></table></figure><br> $ hexo g<br> $ hexo s<br> <figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="code"><pre><span class="xml">
+<span class="comment">&lt;!--more--&gt;</span>	
+
+</span><span class="comment">#部署到github</span><span class="xml">
+	
+</span><span class="number">1.</span><span class="xml"> 注册github账号
+
+</span><span class="number">2.</span><span class="xml"> 创建github账号同名repository
+
+	eg:github账号名位dorayox，则创建`dorayox.github.io`
+	
+</span><span class="number">3.</span><span class="xml"> 部署到github上
+
+	如下所示编辑_config.yml</span>
 </pre></td></tr></table></figure>
 
+<p> deploy:<br>   type: github<br>   repository: git@github.com:dorayox/dorayox.github.io.git<br>   branch: master<br> <figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>
+输入如下命令，完成到github得部署，之后打开浏览器并输入`dorayox<span class="variable">.github</span><span class="variable">.io</span>`来查看
+</pre></td></tr></table></figure><br> $ hexo g<br> $ hexo d<br> ```</p>
 </li>
 </ol>
-</div><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a href="/tags/hexo mac blog/" class="post__tag__link">hexo mac blog</a></li></ul><a href="/2014/06/05/mac上搭建hexo极简指南/#disqus_thread" class="post__foot-link u-fr">0 COMMENTS</a></footer></article></main><footer class="foot"><div class="foot-copy u-fl">&copy; 2014 dorayox</div><menu class="page-menu u-fr"><li class="page-menu__item"><span title="Previous" class="page-menu__link icon-arrow-left page-menu__link--disabled"></span></li><li class="page-menu__item"><a title="Next" href="/2014/05/28/hello-world/" class="page-menu__link icon-arrow-right"></a></li></menu></footer></body></html>
+</div><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a href="/tags/hexo mac blog/" class="post__tag__link">hexo mac blog</a></li></ul><a href="/2014/06/05/mac上搭建hexo极简指南/#disqus_thread" class="post__foot-link u-fr">0 COMMENTS</a></footer></article></main><footer class="foot"><div class="foot-copy u-fl">&copy; 2014 dorayox</div><menu class="page-menu u-fr"><li class="page-menu__item"><a title="Previous" href="/2014/10/04/a-new-blog/" class="page-menu__link icon-arrow-left"></a></li><li class="page-menu__item"><a title="Next" href="/2014/05/28/hello-world/" class="page-menu__link icon-arrow-right"></a></li></menu></footer></body></html>
